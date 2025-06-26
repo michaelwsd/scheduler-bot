@@ -89,8 +89,6 @@ class SaveButton(discord.ui.Button):
         events[self.event_name].setdefault(self.user_id, {})
         events[self.event_name][self.user_id][self.selected_date] = (start_time_str, end_time_str) 
 
-        print(events)
-
         await interaction.response.send_message(
             f"✅ Saved: {self.selected_date} → {f'{start_time_str} - {end_time_str}'}\nPick another date?",
             view=DateSelectView(self.event_name),
