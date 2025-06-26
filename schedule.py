@@ -17,12 +17,12 @@ client = commands.Bot(command_prefix="/", intents=intents)
 async def on_ready():
     print(f"Logged in as {client.user}")
     try:
-        synced = await client.tree.sync(guild=discord.Object(id=1051835171239903232))
+        synced = await client.tree.sync(guild=discord.Object(id=""))
         print(f"Synced {len(synced)} command(s)")
     except Exception as e:
         print(f"Failed to sync commands: {e}")
 
-@client.tree.command(guild= discord.Object(id=1051835171239903232), name = "start", description="Start scheduling an event")
+@client.tree.command(guild= discord.Object(id=""), name = "start", description="Start scheduling an event")
 async def start(interaction: discord.Interaction):
     await interaction.response.send_modal(ScheduleModal())
 
@@ -45,7 +45,7 @@ class ScheduleModal(discord.ui.Modal, title="Submit Availability"):
         embed.set_author(name=interaction.user, icon_url=interaction.user.avatar)
         await interaction.response.send_message(embed=embed, view=DateSelectView(self.event_name.value))
 
-@client.tree.command(guild= discord.Object(id=1051835171239903232), name = "summary", description="View event summary")
+@client.tree.command(guild= discord.Object(id=""), name = "summary", description="View event summary")
 async def summary(interaction: discord.Interaction):
     embed = discord.Embed(title="📋 Event Summary", color=discord.Color.blue())
 
@@ -62,7 +62,7 @@ async def summary(interaction: discord.Interaction):
 
     await interaction.response.send_message(embed=embed, ephemeral=False)
 
-@client.tree.command(guild= discord.Object(id=1051835171239903232), name = "schedule", description="Schedule the best time for everyone")
+@client.tree.command(guild= discord.Object(id=""), name = "schedule", description="Schedule the best time for everyone")
 @discord.app_commands.describe(event_name = "Name of the event to schedule")
 async def schedule(interaction: discord.Interaction, event_name: str):
     embed = discord.Embed(title="📋 Schedule Summary", color=discord.Color.blue())
