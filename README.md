@@ -1,7 +1,7 @@
 # Discord Scheduler Bot
 
 Scheduling meetups is a pain and when2meet sucks so I made this bot :) <br>
-To use, replace the token with your own and run `schedule.py`.
+To use, replace the token with your own and id with the server id, then run `schedule.py`.
 
 ## Commands
 1. `/start` to start an event, users can select the earliest and latest starting time for the following two weeks.
